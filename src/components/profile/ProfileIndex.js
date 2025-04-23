@@ -1,23 +1,32 @@
-import logo from "../../assets/logo.jpg";
-import ladyImage from "../../assets/ladyImage.jpg";
-import secondImage from "../../assets/secondImage.jpg";
-import thirdImage from "../../assets/thirdImage.jpg";
 import { useNavigate } from "react-router-dom";
+import logo from "../../assets/logo.jpg";
+import ProfileView from "./ProfileView";
+import EditProfile from "./EditProfile";
+import AdsPage from "./AdsPage";
+import PostAdPage from "./PostAdPage";
 import { useState } from "react";
 
-const HomePage = () => {
+const ProfileIndex = () => {
+  const [searchParams] = useSearchParams();
+  const id = searchParams.get("id"); // profile id
+
   const navigate = useNavigate();
 
-  const [adList, setAdList] = useState([]);
-  const [itemsCount, setItemsCount] = useState(0);
+  const [selectedMenu, setSelectedMenu] = useState("myAccount");
+
   const onSignInClick = () => {
     navigate("/signup");
   };
   const onPostYourAdClick = () => {};
 
-  const onAdClick = (item) => {
-    navigate(`/adDetailpage?id=${item.id}`);
+  const onMenuClick = (menu) => {
+    if (menu === "logout") {
+      navigate("/");
+      return;
+    }
+    setSelectedMenu(menu);
   };
+
   return (
     <>
       <div className="homepage-header">
@@ -61,37 +70,32 @@ const HomePage = () => {
       </div>
 
       <div>
-        <h1>Get daily thing in same platform</h1>
+        <span>{`Home > My Profile`}</span>
+
         <div>
-          <img src={ladyImage} alt="img" />
-          <img src={secondImage} alt="img" />
-          <img src={thirdImage} alt="img" />
+          <span onClick={() => onMenuClick("myAccount")}>My Account</span>
+          <span onClick={() => onMenuClick("profile")}>Profile</span>
+          <span onClick={() => onMenuClick("ads")}>Ads</span>
+          <span onClick={() => onMenuClick("postAd")}>Post Ad</span>
+          <span onClick={() => onMenuClick("logout")}>Logout</span>
         </div>
-      </div>
 
-      <div>
-        <h4>What’s new</h4>
-        <h1>Fresh recommendations</h1>
-      </div>
-
-      <div>
-        <span>{itemsCount} Items</span>
-        {adList?.length > 0 &&
-          adList.map((item) => {
-            return (
-              <div onClick={(item) => onAdClick(item)}>
-                <img src={item.imageUrl} alt="prod-img" />
-                <div>
-                  <span>{item.location}</span> <span>{item.lastSeen}</span>
-                </div>
-                <div>{item.productName}</div>
-                <div>{item.price}</div>
-              </div>
-            );
-          })}
+        <div>
+          {selectedMenu === "myAccount" ? (
+            <ProfileView setSelectedMenu={setSelectedMenu} />
+          ) : selectedMenu === "profile" ? (
+            <EditProfile />
+          ) : selectedMenu === "ads" ? (
+            <AdsPage />
+          ) : selectedMenu === "postAd" ? (
+            <PostAdPage />
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
     </>
   );
 };
 
-export default HomePage;
+export default ProfileIndex;

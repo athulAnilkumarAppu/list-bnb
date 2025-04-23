@@ -1,23 +1,23 @@
+import { useNavigate, useSearchParams } from "react-router-dom";
 import logo from "../../assets/logo.jpg";
-import ladyImage from "../../assets/ladyImage.jpg";
-import secondImage from "../../assets/secondImage.jpg";
-import thirdImage from "../../assets/thirdImage.jpg";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-const HomePage = () => {
+const AdDetailPage = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const id = searchParams.get("id");
 
-  const [adList, setAdList] = useState([]);
-  const [itemsCount, setItemsCount] = useState(0);
+  const [productDetails, setProductDetails] = useState(null);
+
   const onSignInClick = () => {
     navigate("/signup");
   };
   const onPostYourAdClick = () => {};
 
-  const onAdClick = (item) => {
-    navigate(`/adDetailpage?id=${item.id}`);
+  const onProfileClick = () => {
+    navigate(`/profile?id=${productDetails.profileId}`);
   };
+
   return (
     <>
       <div className="homepage-header">
@@ -61,37 +61,35 @@ const HomePage = () => {
       </div>
 
       <div>
-        <h1>Get daily thing in same platform</h1>
+        <h2>{productDetails?.productName}</h2>
+        <span>{productDetails?.location}</span>
+        <span>{productDetails?.publishedDate}</span>
+
+        <img src={productDetails?.image} alt="prod-img" />
+
+        <h3>Overview</h3>
+        <p>{productDetails?.description}</p>
+      </div>
+
+      <div>
+        <div>Price ${productDetails?.price || 0} </div>
+      </div>
+
+      <div onClick={() => onProfileClick()}>
+        <img src={productDetails?.profileImage} alt="img" />
+        <span>Member since {productDetails?.membershipDate}</span>
+        <h3>{productDetails?.authorName}</h3>
         <div>
-          <img src={ladyImage} alt="img" />
-          <img src={secondImage} alt="img" />
-          <img src={thirdImage} alt="img" />
+          <span>Click to show number</span>
+          <span>{productDetails?.number}</span>
         </div>
-      </div>
-
-      <div>
-        <h4>What’s new</h4>
-        <h1>Fresh recommendations</h1>
-      </div>
-
-      <div>
-        <span>{itemsCount} Items</span>
-        {adList?.length > 0 &&
-          adList.map((item) => {
-            return (
-              <div onClick={(item) => onAdClick(item)}>
-                <img src={item.imageUrl} alt="prod-img" />
-                <div>
-                  <span>{item.location}</span> <span>{item.lastSeen}</span>
-                </div>
-                <div>{item.productName}</div>
-                <div>{item.price}</div>
-              </div>
-            );
-          })}
+        <div>
+          <span>Click to show email</span>
+          <span>{productDetails?.email}</span>
+        </div>
       </div>
     </>
   );
 };
 
-export default HomePage;
+export default AdDetailPage;
