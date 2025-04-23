@@ -17,14 +17,18 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const onSignInClick = () => {};
+  const onSignInClick = () => {
+    navigate("/register");
+  };
 
-  const onLoginClick = () => {};
+  const onLoginClick = () => {
+    navigate("/homepage");
+  };
 
   const onPostYourAdClick = () => {};
 
   const onRegisterClick = () => {
-    navigate("/signup");
+    navigate("/register");
   };
 
   return (
@@ -33,7 +37,7 @@ const Login = () => {
         <img src={logo} alt="logo" />
 
         <span onClick={() => onSignInClick()}>
-          {/* <svg
+          <svg
             width="13"
             height="14"
             viewBox="0 0 13 14"
@@ -45,7 +49,7 @@ const Login = () => {
               fill="#212121"
               fill-opacity="0.3"
             />
-          </svg> */}
+          </svg>
           Sign In
         </span>
 

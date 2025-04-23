@@ -43,7 +43,7 @@ const SignUp = () => {
         <img src={logo} alt="logo" />
 
         <span onClick={() => onSignInClick()}>
-          {/* <svg
+          <svg
             width="13"
             height="14"
             viewBox="0 0 13 14"
@@ -55,7 +55,7 @@ const SignUp = () => {
               fill="#212121"
               fill-opacity="0.3"
             />
-          </svg> */}
+          </svg>
           Sign In
         </span>
 
