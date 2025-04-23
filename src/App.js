@@ -1,11 +1,7 @@
-import Login from "../src/components/login/Login";
+import RouterIndex from "./route/RouterIndex";
 
 function App() {
-  return (
-    <div>
-      <Login />
-    </div>
-  );
+  return <RouterIndex />;
 }
 
 export default App;

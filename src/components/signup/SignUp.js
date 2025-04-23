@@ -4,10 +4,16 @@ import signupImage from "../../assets/signup.jpg";
 import logo from "../../assets/logo.jpg";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const SignUp = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const onEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
 
   const onUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -17,14 +23,18 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
+  const onConfirmPasswordChange = (e) => {
+    setConfirmPassword(e.target.value);
+  };
+
   const onSignInClick = () => {};
 
-  const onLoginClick = () => {};
+  const onRegisterClick = () => {};
 
   const onPostYourAdClick = () => {};
 
-  const onRegisterClick = () => {
-    navigate("/signup");
+  const onLoginClick = () => {
+    navigate("/");
   };
 
   return (
@@ -75,7 +85,16 @@ const Login = () => {
           Listbnb a Largest Classified Listing Marketplace offers perfect Ads
           classifieds...
         </p>
-        <h3>Login To Your Account</h3>
+        <h3>Create Your Account</h3>
+
+        <label>Email</label>
+        <input
+          type="text"
+          value={email}
+          onChange={(e) => onEmailChange(e)}
+          placeholder="Type here"
+        />
+
         <label>Username</label>
         <input
           type="text"
@@ -92,8 +111,16 @@ const Login = () => {
           placeholder="Type here"
         />
 
-        <button onClick={() => onLoginClick()}>
-          Login{" "}
+        <label>Confirm Password</label>
+        <input
+          type="password"
+          value={confirmPassword}
+          onChange={(e) => onConfirmPasswordChange(e)}
+          placeholder="Type here"
+        />
+
+        <button onClick={() => onRegisterClick()}>
+          Register
           <svg
             width="15"
             height="10"
@@ -110,13 +137,13 @@ const Login = () => {
       </div>
       <div>
         <img src={signupImage} alt="signup" />
-        <h2>Don’t Have an Account?</h2>
+        <h2>Already Have an Account?</h2>
         <p>
-          To connect with us please register for a new account if you are not
-          having one already
+          To connect with us please login to our account if you are having one
+          already
         </p>
-        <button onClick={() => onRegisterClick()}>
-          Register{" "}
+        <button onClick={() => onLoginClick()}>
+          Login
           <svg
             width="15"
             height="10"
@@ -135,4 +162,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
