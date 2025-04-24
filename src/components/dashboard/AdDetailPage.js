@@ -1,11 +1,18 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import logo from "../../assets/logo.jpg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { GetAdDetailsService } from "../../services/AdService";
 
 const AdDetailPage = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");
+
+  const [adDetails, setAdDetails] = useState(null);
+
+  useEffect(() => {
+    GetAdDetailsService(id, setAdDetails);
+  }, []);
 
   const [productDetails, setProductDetails] = useState(null);
 
@@ -21,9 +28,8 @@ const AdDetailPage = () => {
   return (
     <>
       <div className="homepage-header">
-        <img src={logo} alt="logo" />
-
-        <span onClick={() => onSignInClick()}>
+        <img src={logo} alt="logo" className="logo" />
+        <span onClick={() => onSignInClick()} className="sign-in">
           <svg
             width="13"
             height="14"
@@ -39,12 +45,11 @@ const AdDetailPage = () => {
           </svg>
           Sign In
         </span>
-
         <button
           onClick={() => onPostYourAdClick()}
           className="post-your-ad-btn"
         >
-          Post Your Ad{" "}
+          Post Your Ad
           <svg
             width="15"
             height="10"
@@ -60,34 +65,69 @@ const AdDetailPage = () => {
         </button>
       </div>
 
-      <div>
-        <h2>{productDetails?.productName}</h2>
-        <span>{productDetails?.location}</span>
-        <span>{productDetails?.publishedDate}</span>
+      <div className="ad-detail-container">
+        <div className="ad-detail-main">
+          <h2 className="ad-title">{adDetails?.title}</h2>
+          <p className="ad-location">
+            {adDetails?.date ? adDetails?.date : "date not available"}
+          </p>
+          <img
+            src={adDetails?.image}
+            alt="prod-img"
+            className="ad-main-image"
+          />
 
-        <img src={productDetails?.image} alt="prod-img" />
-
-        <h3>Overview</h3>
-        <p>{productDetails?.description}</p>
-      </div>
-
-      <div>
-        <div>Price ${productDetails?.price || 0} </div>
-      </div>
-
-      <div onClick={() => onProfileClick()}>
-        <img src={productDetails?.profileImage} alt="img" />
-        <span>Member since {productDetails?.membershipDate}</span>
-        <h3>{productDetails?.authorName}</h3>
-        <div>
-          <span>Click to show number</span>
-          <span>{productDetails?.number}</span>
+          <h3 className="overview-heading">Overview</h3>
+          <p className="overview-text">{adDetails?.description}</p>
         </div>
-        <div>
-          <span>Click to show email</span>
-          <span>{productDetails?.email}</span>
+
+        {/* Sidebar */}
+        <div className="ad-sidebar">
+          <div className="price-box">
+            <span className="price-label">Price:</span>
+            <span className="price-value">${adDetails?.price || 0}</span>
+          </div>
+
+          <div className="profile-box" onClick={() => onProfileClick()}>
+            <img
+              src={adDetails?.profileImage}
+              alt="img"
+              className="profile-image"
+            />
+            <div className="profile-info">
+              <p className="profile-label">Member since</p>
+              <p className="profile-date">
+                {adDetails?.owner.date
+                  ? adDetails?.owner.lastName
+                  : "date not available"}
+              </p>
+              <h3 className="profile-name">
+                {adDetails?.owner.firstName} {adDetails?.owner.lastName}
+              </h3>
+              <p className="profile-phone">
+                {adDetails?.owner.phone
+                  ? adDetails?.owner.phone
+                  : "Number not available"}
+                x
+              </p>
+              <p className="profile-email">
+                {adDetails?.owner.email
+                  ? adDetails?.owner.email
+                  : "Email not available"}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="footer-logo">
+          <span className="footer-brand">list</span>
+          <strong>bnb</strong>
+        </div>
+        <span className="footer-copy">© Copyright 2024</span>
+      </footer>
     </>
   );
 };

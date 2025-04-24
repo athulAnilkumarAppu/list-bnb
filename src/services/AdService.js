@@ -43,44 +43,36 @@ export const GetAdListService = (setAdList) => {
     });
 };
 
-export const GetAdDetailsService = (params) => {
+export const GetAdDetailsService = (id, setAdDetails) => {
   return axios
-    .get(
-      `${API_BASE_URL}/api/advertisements/:id`,
-      {},
-      {
-        headers: {
-          "x-api-key": API_KEY,
-          Authorization: "Bearer" + token,
-          // Accept: "application/json, text/plain. */*",
-          "Content-Type": "application/json",
+    .get(`${API_BASE_URL}/api/advertisements/${id}`, {
+      headers: {
+        "x-api-key": API_KEY,
+        Authorization: "Bearer" + token,
+        // Accept: "application/json, text/plain. */*",
+        "Content-Type": "application/json",
 
-          // "Access-Control-Allow-origin": "*",
-        },
-      }
-    )
+        // "Access-Control-Allow-origin": "*",
+      },
+    })
     .then((res) => {
+      setAdDetails(res.data);
       console.log("get ad details successfull");
-      return res;
     });
 };
 
 export const GetUserProfileService = (params) => {
   return axios
-    .get(
-      `${API_BASE_URL}/api/profile`,
-      {},
-      {
-        headers: {
-          "x-api-key": API_KEY,
-          Authorization: "Bearer" + token,
-          // Accept: "application/json, text/plain. */*",
-          "Content-Type": "application/json",
+    .get(`${API_BASE_URL}/api/profile`, {
+      headers: {
+        "x-api-key": API_KEY,
+        Authorization: "Bearer" + token,
+        // Accept: "application/json, text/plain. */*",
+        "Content-Type": "application/json",
 
-          // "Access-Control-Allow-origin": "*",
-        },
-      }
-    )
+        // "Access-Control-Allow-origin": "*",
+      },
+    })
     .then((res) => {
       console.log("get user profile successfull");
       return res;

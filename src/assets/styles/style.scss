@@ -299,3 +299,145 @@ html {
   color: #ff006f;
   font-weight: bold;
 }
+
+//ad details page
+
+.ad-detail-container {
+  display: flex;
+  gap: 40px;
+  padding: 40px 60px;
+  background-color: #fafafa;
+}
+
+.ad-detail-main {
+  flex: 2;
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.ad-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.ad-location {
+  font-size: 14px;
+  color: #757575;
+  margin-bottom: 20px;
+}
+
+.ad-main-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.overview-heading {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.overview-text {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Sidebar */
+.ad-sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.price-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.price-label {
+  font-size: 14px;
+  color: #999;
+}
+
+.price-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ff006f;
+  margin-top: 5px;
+}
+
+/* Profile */
+.profile-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.profile-box:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.profile-image {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.profile-info {
+  color: #444;
+}
+
+.profile-label {
+  font-size: 12px;
+  color: #888;
+}
+
+.profile-date {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.profile-name {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.profile-phone,
+.profile-email {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Footer */
+.footer {
+  margin-top: 60px;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #eee;
+  font-size: 14px;
+  color: #999;
+}
+
+.footer-brand {
+  font-weight: 400;
+  color: #444;
+}
