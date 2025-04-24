@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #fff;
+  color: #212121;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 24px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+.header-logo {
+  height: 32px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.header-signin {
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.header-postad {
+  background-color: #ff007a;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.login-wrapper {
+  display: flex;
+  flex: 1;
+  padding: 60px;
+  gap: 60px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.login-form {
+  flex: 1;
+  max-width: 500px;
+  padding: 48px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+}
+
+.form-logo {
+  height: 24px;
+  margin-bottom: 8px;
+}
+
+.form-description {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 24px;
+}
+
+.form-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 32px;
+}
+
+.input-label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.form-login-btn {
+  width: 100%;
+  background-color: #ff007a;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.register-panel {
+  flex: 1;
+  max-width: 460px;
+  background-color: #fff6fb;
+  border-radius: 16px;
+  padding: 48px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-image {
+  width: 220px;
+  margin-bottom: 30px;
+}
+
+.register-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.register-text {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 24px;
+}
+
+.register-btn {
+  background-color: #ff007a;
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
