@@ -1,5 +1,8 @@
 import axios from "axios";
-import API_BASE_URL from "../config/config";
+import { API_BASE_URL } from "../config/config";
+import { API_KEY } from "../config/config";
+
+const token = localStorage.getItem("token");
 
 export const CreateAdService = (params) => {
   return axios
@@ -8,7 +11,12 @@ export const CreateAdService = (params) => {
       { ...params },
       {
         headers: {
-          token: localStorage.getItem("token") || "",
+          "x-api-key": API_KEY,
+          Authorization: "Bearer" + token,
+          // Accept: "application/json, text/plain. */*",
+          "Content-Type": "application/json",
+
+          // "Access-Control-Allow-origin": "*",
         },
       }
     )
@@ -17,20 +25,21 @@ export const CreateAdService = (params) => {
     });
 };
 
-export const GetAdListService = (params) => {
+export const GetAdListService = (setAdList) => {
   return axios
-    .get(
-      `${API_BASE_URL}/api/advertisements`,
-      {},
-      {
-        headers: {
-          token: localStorage.getItem("token") || "",
-        },
-      }
-    )
+    .get(`${API_BASE_URL}/api/advertisements`, {
+      headers: {
+        "x-api-key": API_KEY,
+        Authorization: "Bearer" + token,
+        // Accept: "application/json, text/plain. */*",
+        "Content-Type": "application/json",
+
+        // "Access-Control-Allow-origin": "*",
+      },
+    })
     .then((res) => {
       console.log("get ad list successfull");
-      return res;
+      setAdList(res.data);
     });
 };
 
@@ -41,7 +50,12 @@ export const GetAdDetailsService = (params) => {
       {},
       {
         headers: {
-          token: localStorage.getItem("token") || "",
+          "x-api-key": API_KEY,
+          Authorization: "Bearer" + token,
+          // Accept: "application/json, text/plain. */*",
+          "Content-Type": "application/json",
+
+          // "Access-Control-Allow-origin": "*",
         },
       }
     )
@@ -58,7 +72,12 @@ export const GetUserProfileService = (params) => {
       {},
       {
         headers: {
-          token: localStorage.getItem("token") || "",
+          "x-api-key": API_KEY,
+          Authorization: "Bearer" + token,
+          // Accept: "application/json, text/plain. */*",
+          "Content-Type": "application/json",
+
+          // "Access-Control-Allow-origin": "*",
         },
       }
     )
@@ -75,7 +94,12 @@ export const UpdateUserProfileService = (params) => {
       {},
       {
         headers: {
-          token: localStorage.getItem("token") || "",
+          "x-api-key": API_KEY,
+          Authorization: "Bearer" + token,
+          // Accept: "application/json, text/plain. */*",
+          "Content-Type": "application/json",
+
+          // "Access-Control-Allow-origin": "*",
         },
       }
     )
@@ -91,7 +115,12 @@ export const DeleteAdService = (params) => {
       {},
       {
         headers: {
-          token: localStorage.getItem("token") || "",
+          "x-api-key": API_KEY,
+          Authorization: "Bearer" + token,
+          // Accept: "application/json, text/plain. */*",
+          "Content-Type": "application/json",
+
+          // "Access-Control-Allow-origin": "*",
         },
       }
     )

@@ -3,13 +3,19 @@ import ladyImage from "../../assets/ladyImage.jpg";
 import secondImage from "../../assets/secondImage.jpg";
 import thirdImage from "../../assets/thirdImage.jpg";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { GetAdListService } from "../../services/AdService";
 
 const HomePage = () => {
   const navigate = useNavigate();
 
   const [adList, setAdList] = useState([]);
   const [itemsCount, setItemsCount] = useState(0);
+
+  useEffect(() => {
+    GetAdListService(setAdList);
+  }, []);
+
   const onSignInClick = () => {
     navigate("/signup");
   };
@@ -80,11 +86,11 @@ const HomePage = () => {
           adList.map((item) => {
             return (
               <div onClick={(item) => onAdClick(item)}>
-                <img src={item.imageUrl} alt="prod-img" />
+                <img src={item.image} alt="prod-img" />
                 <div>
-                  <span>{item.location}</span> <span>{item.lastSeen}</span>
+                  <span>{item.description}</span>
                 </div>
-                <div>{item.productName}</div>
+                <div>{item.title}</div>
                 <div>{item.price}</div>
               </div>
             );
