@@ -23,7 +23,6 @@ export const LoginService = (username, password) => {
       } else {
         alert("Invalid username or password, Please try again.. ");
       }
-      l;
     });
 };
 
