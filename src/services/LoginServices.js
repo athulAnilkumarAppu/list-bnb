@@ -30,7 +30,7 @@ export const LoginService = (username, password, setAuthenticated) => {
     });
 };
 
-export const SignupService = (email, username, password) => {
+export const SignupService = (email, username, password, setAuthenticated) => {
   return axios
     .post(
       `${API_BASE_URL}/api/auth/local/register`,
@@ -47,6 +47,7 @@ export const SignupService = (email, username, password) => {
     .then((res) => {
       if (res) {
         localStorage.setItem("token", res.data.jwt);
+        setAuthenticated(true);
         console.log("Signup successfull");
       } else {
         alert("User registration failed, Please try again.. ");

@@ -12,9 +12,17 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const [authenicated, setAuthenticated] = useState(false);
+
   useEffect(() => {
     localStorage.clear("token");
   }, []);
+
+  useEffect(() => {
+    if (authenicated) {
+      navigate("/homepage");
+    }
+  }, [authenicated]);
 
   const onEmailChange = (e) => {
     setEmail(e.target.value);
@@ -35,7 +43,7 @@ const SignUp = () => {
   const onSignInClick = () => {};
 
   const onRegisterClick = () => {
-    SignupService(email, username, password);
+    SignupService(email, username, password, setAuthenticated);
   };
 
   const onPostYourAdClick = () => {
