@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import signupImage from "../../assets/signup.jpg";
 import logo from "../../assets/logo.jpg";
@@ -9,6 +9,14 @@ const Login = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const [authenicated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    if (authenicated) {
+      navigate("/homepage");
+    }
+  }, [authenicated]);
 
   const onUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -23,7 +31,7 @@ const Login = () => {
   };
 
   const onLoginClick = () => {
-    LoginService(username, password);
+    LoginService(username, password, setAuthenticated);
     // navigate("/homepage");
   };
 

@@ -2,7 +2,7 @@ import axios from "axios";
 import { API_BASE_URL } from "../config/config";
 import { API_KEY } from "../config/config";
 
-export const LoginService = (username, password) => {
+export const LoginService = (username, password, setAuthenticated) => {
   return axios
     .post(
       `${API_BASE_URL}/api/auth/local`,
@@ -20,9 +20,13 @@ export const LoginService = (username, password) => {
       if (res) {
         localStorage.setItem("token", res.data.jwt);
         console.log("Login successfull");
+        setAuthenticated(true);
       } else {
         alert("Invalid username or password, Please try again.. ");
       }
+    })
+    .catch((err) => {
+      alert("Invalid username or password, Please try again.. ");
     });
 };
 
@@ -45,7 +49,10 @@ export const SignupService = (email, username, password) => {
         localStorage.setItem("token", res.data.jwt);
         console.log("Signup successfull");
       } else {
-        alert("Register failed, Please try again.. ");
+        alert("User registration failed, Please try again.. ");
       }
+    })
+    .catch((err) => {
+      alert("User registration failed, Please try again.. ");
     });
 };
