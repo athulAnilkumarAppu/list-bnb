@@ -14,15 +14,13 @@ const AdDetailPage = () => {
     GetAdDetailsService(id, setAdDetails);
   }, []);
 
-  const [productDetails, setProductDetails] = useState(null);
-
   const onSignInClick = () => {
     navigate("/signup");
   };
   const onPostYourAdClick = () => {};
 
-  const onProfileClick = () => {
-    navigate(`/profile?id=${productDetails.profileId}`);
+  const onProfileClick = (id) => {
+    navigate(`/profile?id=${id}`);
   };
 
   return (
@@ -88,7 +86,10 @@ const AdDetailPage = () => {
             <span className="price-value">${adDetails?.price || 0}</span>
           </div>
 
-          <div className="profile-box" onClick={() => onProfileClick()}>
+          <div
+            className="profile-box"
+            onClick={() => onProfileClick(adDetails?.owner.id)}
+          >
             <img
               src={adDetails?.owner.profileImage}
               alt="img"

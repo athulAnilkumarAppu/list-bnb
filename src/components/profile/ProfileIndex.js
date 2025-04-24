@@ -4,13 +4,20 @@ import ProfileView from "./ProfileView";
 import EditProfile from "./EditProfile";
 import AdsPage from "./AdsPage";
 import PostAdPage from "./PostAdPage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { GetUserProfileService } from "../../services/AdService";
 
 const ProfileIndex = () => {
   const [searchParams] = useSearchParams();
-  const id = searchParams.get("id"); // profile id
+  const id = searchParams.get("id");
 
   const navigate = useNavigate();
+
+  const [profileDetails, setProfileDetails] = useState(null);
+
+  useEffect(() => {
+    GetUserProfileService(setProfileDetails);
+  }, []);
 
   const [selectedMenu, setSelectedMenu] = useState("myAccount");
 
@@ -30,9 +37,9 @@ const ProfileIndex = () => {
   return (
     <>
       <div className="homepage-header">
-        <img src={logo} alt="logo" />
+        <img src={logo} alt="logo" className="logo" />
 
-        <span onClick={() => onSignInClick()}>
+        <span onClick={onSignInClick} className="sign-in-btn">
           <svg
             width="13"
             height="14"
@@ -49,11 +56,8 @@ const ProfileIndex = () => {
           Sign In
         </span>
 
-        <button
-          onClick={() => onPostYourAdClick()}
-          className="post-your-ad-btn"
-        >
-          Post Your Ad{" "}
+        <button onClick={onPostYourAdClick} className="post-your-ad-btn">
+          Post Your Ad
           <svg
             width="15"
             height="10"
@@ -69,29 +73,61 @@ const ProfileIndex = () => {
         </button>
       </div>
 
-      <div>
-        <span>{`Home > My Profile`}</span>
+      <div className="breadcrumb">Home &gt; My Profile</div>
 
-        <div>
-          <span onClick={() => onMenuClick("myAccount")}>My Account</span>
-          <span onClick={() => onMenuClick("profile")}>Profile</span>
-          <span onClick={() => onMenuClick("ads")}>Ads</span>
-          <span onClick={() => onMenuClick("postAd")}>Post Ad</span>
-          <span onClick={() => onMenuClick("logout")}>Logout</span>
+      <div className="profile-container">
+        {/* Sidebar Menu */}
+        <div className="profile-sidebar">
+          <span
+            className={`menu-item ${
+              selectedMenu === "myAccount" ? "active" : ""
+            }`}
+            onClick={() => onMenuClick("myAccount")}
+          >
+            My Account
+          </span>
+          <span
+            className={`menu-item ${
+              selectedMenu === "profile" ? "active" : ""
+            }`}
+            onClick={() => onMenuClick("profile")}
+          >
+            Profile
+          </span>
+          <span
+            className={`menu-item ${selectedMenu === "ads" ? "active" : ""}`}
+            onClick={() => onMenuClick("ads")}
+          >
+            Ads
+          </span>
+          <span
+            className={`menu-item ${selectedMenu === "postAd" ? "active" : ""}`}
+            onClick={() => onMenuClick("postAd")}
+          >
+            Post Ad
+          </span>
+          <span
+            className="menu-item logout"
+            onClick={() => onMenuClick("logout")}
+          >
+            Logout
+          </span>
         </div>
 
-        <div>
+        <div className="profile-content">
           {selectedMenu === "myAccount" ? (
-            <ProfileView setSelectedMenu={setSelectedMenu} />
+            <ProfileView
+              setSelectedMenu={setSelectedMenu}
+              profileDetails={profileDetails}
+              id={id}
+            />
           ) : selectedMenu === "profile" ? (
             <EditProfile />
           ) : selectedMenu === "ads" ? (
             <AdsPage />
           ) : selectedMenu === "postAd" ? (
             <PostAdPage />
-          ) : (
-            <></>
-          )}
+          ) : null}
         </div>
       </div>
     </>

@@ -61,12 +61,12 @@ export const GetAdDetailsService = (id, setAdDetails) => {
     });
 };
 
-export const GetUserProfileService = (params) => {
+export const GetUserProfileService = (setProfileDetails) => {
   return axios
     .get(`${API_BASE_URL}/api/profile`, {
       headers: {
         "x-api-key": API_KEY,
-        Authorization: "Bearer" + token,
+        Authorization: "Bearer" + " " + token,
         // Accept: "application/json, text/plain. */*",
         "Content-Type": "application/json",
 
@@ -75,7 +75,7 @@ export const GetUserProfileService = (params) => {
     })
     .then((res) => {
       console.log("get user profile successfull");
-      return res;
+      setProfileDetails(res.data);
     });
 };
 
