@@ -17,6 +17,7 @@ const HomePage = () => {
   }, []);
 
   const onSignInClick = () => {
+    localStorage.clear("token");
     navigate("/register");
   };
   const onPostYourAdClick = () => {

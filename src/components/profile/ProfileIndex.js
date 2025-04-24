@@ -22,6 +22,7 @@ const ProfileIndex = () => {
   const [selectedMenu, setSelectedMenu] = useState("myAccount");
 
   const onSignInClick = () => {
+    localStorage.clear("token");
     navigate("/register");
   };
   const onPostYourAdClick = () => {

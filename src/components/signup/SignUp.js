@@ -15,10 +15,6 @@ const SignUp = () => {
   const [authenicated, setAuthenticated] = useState(false);
 
   useEffect(() => {
-    localStorage.clear("token");
-  }, []);
-
-  useEffect(() => {
     if (authenicated) {
       navigate("/homepage");
     }

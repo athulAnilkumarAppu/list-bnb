@@ -13,10 +13,6 @@ const Login = () => {
   const [authenicated, setAuthenticated] = useState(false);
 
   useEffect(() => {
-    localStorage.clear("token");
-  }, []);
-
-  useEffect(() => {
     if (authenicated) {
       navigate("/homepage");
     }
@@ -31,6 +27,7 @@ const Login = () => {
   };
 
   const onSignInClick = () => {
+    localStorage.clear("token");
     navigate("/register");
   };
 
