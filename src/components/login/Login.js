@@ -3,6 +3,7 @@ import { useState } from "react";
 import signupImage from "../../assets/signup.jpg";
 import logo from "../../assets/logo.jpg";
 import { useNavigate } from "react-router-dom";
+import { LoginService } from "../../services/LoginServices";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -22,7 +23,8 @@ const Login = () => {
   };
 
   const onLoginClick = () => {
-    navigate("/homepage");
+    LoginService(username, password);
+    // navigate("/homepage");
   };
 
   const onPostYourAdClick = () => {};

@@ -1,20 +1,29 @@
 import axios from "axios";
-import API_BASE_URL from "../config/config";
-import API_KEY from "../config/config";
+import { API_BASE_URL } from "../config/config";
+import { API_KEY } from "../config/config";
 
 export const LoginService = (username, password) => {
   return axios
     .post(
-      `${API_BASE_URL}/api/auth/localr`,
-      { username: username, password: password },
+      `${API_BASE_URL}/api/auth/local`,
+      { identifier: username, password: password },
       {
         headers: {
-          x_api_key: API_KEY,
+          "x-api-key": API_KEY,
+          // Accept: "application/json, text/plain. */*",
+          "Content-Type": "application/json",
+          // "Access-Control-Allow-origin": "*",
         },
       }
     )
     .then((res) => {
-      console.log("Login successfull");
+      if (res) {
+        localStorage.setItem("token", res.data.jwt);
+        console.log("Login successfull");
+      } else {
+        alert("Invalid username or password, Please try again.. ");
+      }
+      l;
     });
 };
 
@@ -25,11 +34,19 @@ export const SignupService = (email, username, password) => {
       { email: email, username: username, password: password },
       {
         headers: {
-          x_api_key: API_KEY,
+          "x-api-key": API_KEY,
+          // Accept: "application/json, text/plain. */*",
+          "Content-Type": "application/json",
+          // "Access-Control-Allow-origin": "*",
         },
       }
     )
     .then((res) => {
-      console.log("Signup successfull");
+      if (res) {
+        localStorage.setItem("token", res.data.jwt);
+        console.log("Signup successfull");
+      } else {
+        alert("Register failed, Please try again.. ");
+      }
     });
 };

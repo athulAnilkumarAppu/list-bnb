@@ -3,6 +3,7 @@ import { useState } from "react";
 import signupImage from "../../assets/signup.jpg";
 import logo from "../../assets/logo.jpg";
 import { useNavigate } from "react-router-dom";
+import { SignupService } from "../../services/LoginServices";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -29,7 +30,9 @@ const SignUp = () => {
 
   const onSignInClick = () => {};
 
-  const onRegisterClick = () => {};
+  const onRegisterClick = () => {
+    SignupService(email, username, password);
+  };
 
   const onPostYourAdClick = () => {};
 
