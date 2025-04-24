@@ -77,7 +77,9 @@ const ProfileIndex = () => {
         </button>
       </div>
 
-      <div className="breadcrumb">Home &gt; My Profile</div>
+      <div className="breadcrumb">
+        <span onClick={() => navigate("/homepage")}>Home </span>&gt; My Profile
+      </div>
 
       <div className="profile-container">
         {/* Sidebar Menu */}
