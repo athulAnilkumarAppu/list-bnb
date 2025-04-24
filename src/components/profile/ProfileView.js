@@ -17,31 +17,51 @@ const ProfileView = ({ setSelectedMenu, profileDetails, id }) => {
 
   return (
     <>
-      <img src={profileDetails?.image} alt="profile" />
-      <div>
-        Member since{" "}
-        {profileDetails?.date ? profileDetails.date : "date not available"}
+      <div className="profile-header-card">
+        <div className="profile-info-left">
+          <img
+            src={profileDetails?.image}
+            alt="profile"
+            className="profile-img"
+          />
+          <div>
+            <h3>{profileDetails?.name}</h3>
+            <span className="member-since">
+              Member since {profileDetails?.date || "Date not available"}
+            </span>
+          </div>
+        </div>
+
+        <button className="edit-profile-btn" onClick={oneditProfileClick}>
+          Edit Profile
+        </button>
       </div>
 
-      <button onClick={() => oneditProfileClick()}>Edit Profile</button>
-
-      <div>
+      <div className="contact-info">
         <span>{profileDetails?.location}</span>
-        <span>{profileDetails?.email}</span>{" "}
+        <span>{profileDetails?.email}</span>
         <span>{profileDetails?.phone}</span>
         <span>Provider: {profileDetails?.provider}</span>
       </div>
 
-      <div>
-        <img src={adList?.image} alt="profile" />
-        <h3>{adList.title}</h3>
-        <span>{adList.description}</span>
-        <span>{adList.date ? adList.date : "Date not available"}</span>
+      <div className="ad-card">
+        <img src={adList?.image} alt="ad" className="ad-image" />
+        <div className="ad-details">
+          <h3>{adList.title}</h3>
+          <span className="ad-location">
+            {adList.description} • {adList.date || "Date not available"}
+          </span>
+          <h2 className="ad-price">${adList.price}</h2>
+        </div>
 
-        <h1>$ {adList.price}</h1>
-
-        <button onClick={() => onViewAdClick(adList)}>View</button>
-        <button onClick={() => oneditAdClick(adList)}>Edit Ad</button>
+        <div className="ad-buttons">
+          <button className="view-btn" onClick={() => onViewAdClick(adList)}>
+            View
+          </button>
+          <button className="edit-btn" onClick={() => oneditAdClick(adList)}>
+            Edit Ad
+          </button>
+        </div>
       </div>
     </>
   );

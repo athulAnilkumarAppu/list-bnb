@@ -35,8 +35,8 @@ const EditProfile = () => {
   const onSaveClick = () => {};
 
   return (
-    <>
-      <label>Name</label>
+    <div className="profile-edit-form">
+      <label>Name*</label>
       <input
         value={name}
         onChange={(e) => onNameChange(e)}
@@ -44,7 +44,7 @@ const EditProfile = () => {
         required
       />
 
-      <label>Email</label>
+      <label>Email*</label>
       <input
         value={email}
         onChange={(e) => onEmailChange(e)}
@@ -52,7 +52,7 @@ const EditProfile = () => {
         required
       />
 
-      <label>Username</label>
+      <label>Username*</label>
       <input
         value={username}
         onChange={(e) => onUsernameChange(e)}
@@ -60,7 +60,7 @@ const EditProfile = () => {
         required
       />
 
-      <label>Photo</label>
+      <label>Photo*</label>
       <input
         value={imageUrl}
         onChange={(e) => onImageUrlChange(e)}
@@ -68,7 +68,7 @@ const EditProfile = () => {
         required
       />
 
-      <label>Location</label>
+      <label>Location*</label>
       <input
         value={location}
         onChange={(e) => onLocationChange(e)}
@@ -76,7 +76,7 @@ const EditProfile = () => {
         required
       />
 
-      <label>Contact Number</label>
+      <label>Contact Number*</label>
       <input
         value={contactNumber}
         onChange={(e) => onContactChange(e)}
@@ -84,8 +84,10 @@ const EditProfile = () => {
         required
       />
 
-      <button onClick={() => onSaveClick()}>Save</button>
-    </>
+      <button className="save-btn" onClick={onSaveClick}>
+        Save
+      </button>
+    </div>
   );
 };
 
