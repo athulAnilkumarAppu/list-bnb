@@ -22,12 +22,15 @@ const ProfileIndex = () => {
   const [selectedMenu, setSelectedMenu] = useState("myAccount");
 
   const onSignInClick = () => {
-    navigate("/signup");
+    navigate("/register");
   };
-  const onPostYourAdClick = () => {};
+  const onPostYourAdClick = () => {
+    navigate("/profile");
+  };
 
   const onMenuClick = (menu) => {
     if (menu === "logout") {
+      localStorage.clear("token");
       navigate("/");
       return;
     }
@@ -124,9 +127,9 @@ const ProfileIndex = () => {
           ) : selectedMenu === "profile" ? (
             <EditProfile />
           ) : selectedMenu === "ads" ? (
-            <AdsPage />
+            <PostAdPage id={id} />
           ) : selectedMenu === "postAd" ? (
-            <PostAdPage />
+            <AdsPage />
           ) : null}
         </div>
       </div>

@@ -1,29 +1,37 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { GetAdDetailsService } from "../../services/AdService";
 
-const PostAdPage = () => {
-  const [adList, setAdList] = useState([]);
+const PostAdPage = ({ id }) => {
+  const [adList, setAdList] = useState(null);
+
+  useEffect(() => {
+    GetAdDetailsService(id, setAdList);
+  }, []);
 
   const onViewAdClick = (ad) => {};
   const oneditAdClick = (ad) => {};
   return (
-    <>
-      {adList?.length > 0 &&
-        adList.map((item) => {
-          return (
-            <div>
-              <img src={item?.adImage} alt="profile" />
-              <h3>{item.adName}</h3>
-              <span>{item.location}</span>
-              <span>{item.postedDate}</span>
+    <div className="ad-card">
+      <img src={adList?.image} alt="Ad preview" className="ad-image" />
 
-              <h1>$ {item.price}</h1>
+      <div className="ad-info">
+        <h3>{adList?.title}</h3>
+        <p className="ad-location">
+          <span>{adList?.date || "Date not available"}</span>
+        </p>
+        <p className="ad-description">{adList?.description}</p>
+        <h4>${adList?.price}</h4>
+      </div>
 
-              <button onClick={() => onViewAdClick(item)}>View</button>
-              <button onClick={() => oneditAdClick(item)}>Edit Ad</button>
-            </div>
-          );
-        })}
-    </>
+      <div className="ad-actions">
+        <button className="view-btn" onClick={() => onViewAdClick(adList)}>
+          View
+        </button>
+        <button className="edit-btn" onClick={() => oneditAdClick(adList)}>
+          Edit Ad
+        </button>
+      </div>
+    </div>
   );
 };
 

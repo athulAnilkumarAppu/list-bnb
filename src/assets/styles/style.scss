@@ -693,3 +693,139 @@ html {
 .save-btn:hover {
   background-color: #e6006d;
 }
+
+.post-ad-form {
+  background-color: white;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+
+.post-ad-form label {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.post-ad-form input,
+.post-ad-form textarea {
+  padding: 12px 16px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.2s ease;
+}
+
+.post-ad-form input:focus,
+.post-ad-form textarea:focus {
+  border-color: #ff007a;
+}
+
+.post-btn {
+  margin-top: 12px;
+  background-color: #ff007a;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.post-btn:hover {
+  background-color: #e6006d;
+}
+
+.ad-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+  gap: 24px;
+}
+
+.ad-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.ad-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ad-info h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.ad-location {
+  font-size: 13px;
+  color: #666;
+}
+
+.ad-description {
+  font-size: 14px;
+  color: #444;
+  margin: 4px 0;
+}
+
+.ad-info h4 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+.ad-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.view-btn,
+.edit-btn {
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.view-btn {
+  background: white;
+  border: 1px solid #ddd;
+  color: #444;
+}
+
+.view-btn:hover {
+  background-color: #f5f5f5;
+}
+
+.edit-btn {
+  background-color: #ff007a;
+  color: white;
+  font-weight: 500;
+}
+
+.edit-btn:hover {
+  background-color: #e6006d;
+}

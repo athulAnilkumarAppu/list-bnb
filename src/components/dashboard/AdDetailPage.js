@@ -15,9 +15,11 @@ const AdDetailPage = () => {
   }, []);
 
   const onSignInClick = () => {
-    navigate("/signup");
+    navigate("/register");
   };
-  const onPostYourAdClick = () => {};
+  const onPostYourAdClick = () => {
+    navigate("/profile");
+  };
 
   const onProfileClick = (id) => {
     navigate(`/profile?id=${id}`);

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import signupImage from "../../assets/signup.jpg";
 import logo from "../../assets/logo.jpg";
@@ -11,6 +11,10 @@ const SignUp = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  useEffect(() => {
+    localStorage.clear("token");
+  }, []);
 
   const onEmailChange = (e) => {
     setEmail(e.target.value);
@@ -34,7 +38,9 @@ const SignUp = () => {
     SignupService(email, username, password);
   };
 
-  const onPostYourAdClick = () => {};
+  const onPostYourAdClick = () => {
+    alert("Login or signup to continue");
+  };
 
   const onLoginClick = () => {
     navigate("/");

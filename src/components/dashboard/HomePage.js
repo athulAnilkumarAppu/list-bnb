@@ -17,9 +17,11 @@ const HomePage = () => {
   }, []);
 
   const onSignInClick = () => {
-    navigate("/signup");
+    navigate("/register");
   };
-  const onPostYourAdClick = () => {};
+  const onPostYourAdClick = () => {
+    navigate("/profile");
+  };
 
   const onAdClick = (id) => {
     navigate(`/adDetailpage?id=${id}`);

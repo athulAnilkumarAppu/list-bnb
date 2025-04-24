@@ -2,7 +2,8 @@ import axios from "axios";
 import { API_BASE_URL } from "../config/config";
 import { API_KEY } from "../config/config";
 
-const token = localStorage.getItem("token");
+const tokenLc = localStorage.getItem("token");
+const token = `Bearer ${tokenLc}`;
 
 export const CreateAdService = (params) => {
   return axios
@@ -12,7 +13,7 @@ export const CreateAdService = (params) => {
       {
         headers: {
           "x-api-key": API_KEY,
-          Authorization: "Bearer" + token,
+          Authorization: token,
           // Accept: "application/json, text/plain. */*",
           "Content-Type": "application/json",
 
@@ -21,6 +22,7 @@ export const CreateAdService = (params) => {
       }
     )
     .then((res) => {
+      alert("Ad creation successfull");
       console.log("Ad creation successfull");
     });
 };
@@ -30,7 +32,7 @@ export const GetAdListService = (setAdList) => {
     .get(`${API_BASE_URL}/api/advertisements`, {
       headers: {
         "x-api-key": API_KEY,
-        Authorization: "Bearer" + token,
+        Authorization: token,
         // Accept: "application/json, text/plain. */*",
         "Content-Type": "application/json",
 
@@ -48,7 +50,7 @@ export const GetAdDetailsService = (id, setAdDetails) => {
     .get(`${API_BASE_URL}/api/advertisements/${id}`, {
       headers: {
         "x-api-key": API_KEY,
-        Authorization: "Bearer" + token,
+        Authorization: token,
         // Accept: "application/json, text/plain. */*",
         "Content-Type": "application/json",
 
@@ -66,7 +68,7 @@ export const GetUserProfileService = (setProfileDetails) => {
     .get(`${API_BASE_URL}/api/profile`, {
       headers: {
         "x-api-key": API_KEY,
-        Authorization: "Bearer" + " " + token,
+        Authorization: token,
         // Accept: "application/json, text/plain. */*",
         "Content-Type": "application/json",
 
@@ -87,7 +89,7 @@ export const UpdateUserProfileService = (params) => {
       {
         headers: {
           "x-api-key": API_KEY,
-          Authorization: "Bearer" + token,
+          Authorization: token,
           // Accept: "application/json, text/plain. */*",
           "Content-Type": "application/json",
 
@@ -108,7 +110,7 @@ export const DeleteAdService = (params) => {
       {
         headers: {
           "x-api-key": API_KEY,
-          Authorization: "Bearer" + token,
+          Authorization: token,
           // Accept: "application/json, text/plain. */*",
           "Content-Type": "application/json",
 
