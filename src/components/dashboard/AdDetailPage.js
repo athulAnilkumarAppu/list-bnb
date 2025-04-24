@@ -90,7 +90,7 @@ const AdDetailPage = () => {
 
           <div className="profile-box" onClick={() => onProfileClick()}>
             <img
-              src={adDetails?.profileImage}
+              src={adDetails?.owner.profileImage}
               alt="img"
               className="profile-image"
             />
